@@ -19,7 +19,7 @@ def hello():
     """
 
 #Second Route
-#Type in /2 at end of link to access
+#Type in /link at end of link to access
 @app.route("/link")
 def link():
     return """
@@ -44,7 +44,7 @@ def link():
     """
 
 #Third Route
-#Type in /3 at end of link to access
+#Type in /cool at end of link to access
 @app.route("/cool")
 def interesting():
     return """
