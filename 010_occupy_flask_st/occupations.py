@@ -4,13 +4,6 @@
 #2018-09-13
 
 from random import choices
-from random import uniform
-
-def read(CSVfileR):#taken from Intro II hw!Opens a file and returns the contents of the file in a list of strings
-    c = open(CSVfileR,"r")
-    CSV =  c.readlines()
-    c.close()
-    return CSV
 
 def parse_data(filename):
     file = open(filename, 'r')  #open the file in read mode
@@ -59,16 +52,3 @@ def combine():
     return pick_job( parse_data('occupations.csv'))
 #print(pick_job( parse_data('occupations.csv') ))
 
-def main():
-    File = read("data/occupations.csv")
-    head = File[0]
-    head = head[0:len(head) - 1]
-    listH = head.split(",")
-    h1 = listH[0]
-    h2 = listH[1]
-    Data = File
-    Data = Data[1: len(Data)]
-    Data = makeDict(Data)
-    totalPercentage = editData(File)#total percentage is stored globally
-    Dict = makeDict(File)
-    return (randOccupation(Dict,totalPercentage), Data, h1, h2)
