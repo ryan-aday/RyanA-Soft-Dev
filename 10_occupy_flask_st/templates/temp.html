@@ -6,5 +6,19 @@
 <body>
 	<h1> Random Occupation Selector </h1>
 	<p>Chosen Occupation: {{job}}</p>
+
+
+	<table>
+      		<tr>
+        	<th>{{h1}}</th>
+        	<th>{{h2}}</th>
+      		</tr>
+      			{% for key in occupationsData %}
+      		<tr>
+        		<td>{{key}}</td>
+        		<td>{{occupationsData[key]}}</td>
+      		</tr>
+      		{% endfor %}
+    </table>
 </body>
 </html>

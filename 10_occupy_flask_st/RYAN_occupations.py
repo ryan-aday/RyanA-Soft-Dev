@@ -1,4 +1,4 @@
-#Ryan A.
+#Team Bob: Ryan A., Jerry Ye
 #K10: Jinja Tuning
 #Period 7
 #2018-09-24
@@ -6,6 +6,7 @@
 from flask import Flask, render_template
 #imports my function from another python file
 from occupations import combine
+from occupations_data import main
 
 app=Flask(__name__)
 
@@ -26,7 +27,8 @@ def home():
 
 @app.route("/occupations")
 def choose():
-    return render_template('temp.html', job=combine())
+    randomOccupation,occupationsData, h1, h2 = main()
+    return render_template('temp.html', job=combine(), occupationsData = occupationsData,h1 = h1,h2= h2)
 
 if __name__ == "__main__":
     app.debug=True
