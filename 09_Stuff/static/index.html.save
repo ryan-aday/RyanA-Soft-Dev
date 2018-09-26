@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Static</title>
+	</head>
+	<body>
+		<marquee direction ="down"><marquee>
+			<h1>What up <underline><em>PEEPS</em></underline></h1>
+			<a href = "localhost:5000">Back to the homepage for you?</a>
+		</marquee></marquee>
+<style>
+ht{
+	height: 100vh;
+}
+</style>
+</body>
+</html>
+
