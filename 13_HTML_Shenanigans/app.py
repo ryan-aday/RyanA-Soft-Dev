@@ -1,7 +1,7 @@
-Ryan Aday
-SoftDev1 pd7
-K13 -- Echo
-2018-09-28 
+#Ryan Aday
+#SoftDev1 pd7
+#K13 -- Echo
+#2018-09-28 
 
 from flask import Flask, render_template, request
 
@@ -12,7 +12,7 @@ def reroute():
         return render_template("main.html")
 
 
-@app.route('/auth')
+@app.route('/auth', methods=["GET", "POST"])
 def auth():
         #print (app)
         #print (request)
@@ -20,7 +20,11 @@ def auth():
         ##print (request.method)
         #print (request.args)
         #print (request.form)
-        return render_template("auth.html", username=request.args["username"],
+        if (request.method=="GET"):
+                return render_template("auth.html", username=request.args["username"],
+                                method=request.method)
+        else:
+                return render_template("authPOST.html", username=request.args["username"],
                                 method=request.method)
         #All data from the form is carried over via the request.args() method
         

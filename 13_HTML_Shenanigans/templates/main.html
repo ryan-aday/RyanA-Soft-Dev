@@ -7,7 +7,11 @@
 	<!-- <form action="/auth"> -->
 	<h1>Please Fill Out Where You Want to Go Here</h1>
 	<form action="/auth">
-		<input type="text" name="username"> #username gets refered to in app.py, data gets transferred to args.html
-		<input type="submit" name="submit"></input>
+		<input type="text" method="[GET, POST]" name="username" value="GET Username"></input> 
+		<!--username gets refered to in app.py, data gets transferred to args.html, method is GET -->
+		<!-- <input type="text" method="GET" name="username" value="POST Username"></input> -->
+                <!--username gets refered to in app.py, data gets transferred to args.html, method is GET -->
+		
+		<input type="submit" name="submit" value="Press to Submit"></input>
 	</form>
 <body>
