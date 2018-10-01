@@ -20,14 +20,16 @@ def auth():
         ##print (request.method)
         #print (request.args)
         #print (request.form)
+
         if (request.method=="GET"):
-                return render_template("auth.html", username=request.args["username"],
-                                method=request.method)
+                username=request.args["username"]
         else:
-                return render_template("authPOST.html", username=request.args["username"],
+                username=request.form["username"]
+                
+        return render_template("auth.html", username=username,
                                 method=request.method)
         #All data from the form is carried over via the request.args() method
-        
+
 if (__name__) == "__main__":#if this file is run directly then the Flask app will run
     app.debug = True#allows changes to directly affect local host without rerunning app
     app.run()
