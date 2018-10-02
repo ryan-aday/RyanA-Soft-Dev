@@ -1,31 +1,47 @@
-#Ryan Aday
-#SoftDev1 pd7
-#K13 -- Echo
-#2018-09-28 
+# Tina Wong, Ryan Aday
+# Team TL;DR
+# SoftDev1 pd7
+# K14 -- Do I Know You?
+# 2018-10-02
 
-from flask import Flask, render_template, request, session, url_for, redirect 
+from flask import Flask, render_template, request, session, redirect, url_for
+import os
 
-app = Flask(__name__)#Creates an instance of Flask
+app = Flask(__name__) #create instance of class Flask
+app.secret_key = os.urandom(32)  #creates random key of 32 bytes
 
-@app.route('/')
+users = {'test' : '123'}  #key and dict
+
+# home page that links to the form
+@app.route("/") #assign fxn to route
 def home():
-        return render_template("main.html")
+    # print("testing")
+    if 'test' not in session:
+        return render_template('login.html')
+    else:
+        user = 'test'
+        return render_template("welcome.html",user=user)
 
+# a route that receives the form and returns a template with user's information
+@app.route("/auth", methods=["POST"]) #assign fxn to route
+def authenticate():
+    if request.form['username'] not in users.keys():
+        return render_template("login.html", error = "Username invalid, is not "+request.form['username'])
+        #Returns login with Username error
+    
+    elif users[request.form['username']] != request.form['password']:
+        return render_template('login.html', error = "Password invalid, is not "+request.form['password'])
+        #Returns login with Password error
+    
+    else:
+        session['test'] = '123'
+        return redirect(url_for('home'))
 
-@app.route('/auth', methods=["GET"])
-def auth():
-        print (request.args["username"])
-        if (request.args["username"] != "test" or request.args["password"]!="1234"):
-                if (request.args["username"]!="test"):
-                        print ("Username invalid")
-                else:
-                        print ("Password invalid")
-                        
-                return redirect(url_for("home"))
-                
-        return render_template("succ.html", username=request.args["username"])
-        #All data from the form is carried over via the request.args() method
+@app.route('/logout')
+def logout():
+    session.pop('test')  #Ends session
+    return redirect(url_for('home'))
 
-if (__name__) == "__main__":#if this file is run directly then the Flask app will run
-    app.debug = True#allows changes to directly affect local host without rerunning app
+if __name__ == "__main__":
+    app.debug = True
     app.run()
