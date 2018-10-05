@@ -1,7 +1,7 @@
-#Ryan Aday, Jared Ash
-#SoftDev1 pd7
-#HW 16-WHomst
-#2018-10-04
+# Team Dem Boys -- Jared Asch, Ryan Aday
+# SoftDev1 pd7
+# K16 -- No Trouble
+# 2018-10-04
 
 import csv, sqlite3    
 
@@ -35,6 +35,7 @@ db.close()
 
 
 #IMPORTANT!  Windows users can only open up SQLite with winpty sqlite3 on their terminal.
-#To access data, run winpty sqlite3 discoband.db
-#Commands to run are SELECT * from peeps;
+#To access data, run winpty sqlite3 app.py
+#Tables to see can be found with .tables
+#Commands to run are SELECT * from <table>;
 #If you want to be fancy, use command .mode columns
