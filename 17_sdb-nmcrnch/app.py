@@ -14,7 +14,7 @@ if path.exists("app.db"==True):
 	remove_data("app.db")
 else:
 	print("app.db not in use")
-	#Automatically removes existing app.db file
+	#Automatically removes existing app.db file for testing purposes
 
 DB_FILE="app.db"  #Creates .db file
 
@@ -49,5 +49,3 @@ c.execute("SELECT * FROM sel_Courses;")
 print(str(c.fetchall()).replace("),", "),\n"), '\n')
 db.close()  #close database
 
-#remove_data("app.db")
-#Uncomment this to remove app.db file for easier testing
