@@ -31,18 +31,22 @@ def get_avgs():
 
 def add_course(code, mark, stu_id):
     c.execute('INSERT INTO sel_Courses VALUES("{}", {}, {});'.format(code, mark, stu_id))
-    
+
+#printTable=str(c.fetchall()).replace("),", "),\n")
+#Makes data more legible
+
 get_avgs()   #Adds avgs to peeps_avg
 c.execute("SELECT * FROM peeps_avg;")
-print('averages of starting courses: \n\n', c.fetchall(), '\n\n\n')  #Prints everything from peeps_avg
+print('averages of starting courses: \n\n', str(c.fetchall()).replace("),", "),\n"), '\n\n\n')  #Prints everything from peeps_avg
 new_classes = ('A', 'B', 'C', 'D', 'D', 'E', 'F', 'G', 'H', 'I')
 for i in range(40):
     add_course(choice(new_classes), randint(25, 99), randint(1, 10))  #Makes random marks for each new class
 c.execute("SELECT * FROM sel_Courses;")
-print('new courses:\n\n', c.fetchall(),'\n\n\n')  #Prints all data from new sel_Courses
+
+print('new courses:\n\n', str(c.fetchall()).replace("),", "),\n"),'\n\n\n')  #Prints all data from new sel_Courses
 get_avgs()  #Updates averages
 c.execute("SELECT * FROM peeps_avg;")  
-print('new avgs: \n\n', c.fetchall(), '\n\n\n') #Prints everything from new peeps_avg
+print('new avgs: \n\n', str(c.fetchall()).replace("),", "),\n"), '\n\n\n') #Prints everything from new peeps_avg
 
 db.commit()
 db.close()

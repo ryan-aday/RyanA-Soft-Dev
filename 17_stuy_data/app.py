@@ -46,9 +46,12 @@ for row in reader:
 csvfile.close()
 '''
 db.commit()
+#printTable= str(c.fetchall()).replace("),", "),\n")
+#Makes data more legible
+
 #Prints data from both tables
 c.execute("SELECT * FROM sel_Peeps;")
-print(c.fetchall(), '\n')
+print(str(c.fetchall()).replace("),", "),\n"), "\n\n\n")
 c.execute("SELECT * FROM sel_Courses;")
-print(c.fetchall(), '\n')
+print(str(c.fetchall()).replace("),", "),\n"), '\n')
 db.close()  #close database
