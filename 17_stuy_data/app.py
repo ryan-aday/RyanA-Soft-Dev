@@ -3,7 +3,18 @@
 # k17 -- No Trouble
 # 2018-10-05
 
-import csv, sqlite3    
+import csv, sqlite3, os
+from os import path
+
+def remove_data(data):
+    os.remove(data)
+    print(data+" removed.")
+
+if path.exists("app.db"==True):	
+	remove_data("app.db")
+else:
+	print("app.db not in use")
+	#Automatically removes existing app.db file
 
 DB_FILE="app.db"  #Creates .db file
 
@@ -25,27 +36,9 @@ with open("data/courses.csv") as csvfile:
 		c.execute("INSERT INTO sel_Courses VALUES('{}', {}, {});".format(row['code'], row['mark'], row['id']))
 		#adds row headers
 csvfile.close() #Ends executable
-
 db.commit() #Needed to actually confirm tables being made
-'''
-db = sqlite3.connect('datta.db') #open if file exists, otherwise create
-c = db.cursor()               #facilitate db ops
-c.execute("CREATE TABLE nerds(name TEXT, age INTEGER, id INTEGER PRIMARY KEY);")
 
-csvfile = open('data/peeps.csv')
-reader = csv.DictReader(csvfile)
-for row in reader:
-    c.execute("INSERT INTO nerds VALUES('{}', {}, {});".format(row['name'], row['age'], row['id']))
-csvfile.close()
 
-csvfile = open('data/courses.csv')
-c.execute ("CREATE TABLE teacher_reviews(code TEXT, mark INTEGER, id INTEGER);")
-reader = csv.DictReader(csvfile)
-for row in reader:
-    c.execute("INSERT INTO teacher_reviews VALUES('{}', {}, {});".format(row['code'], row['mark'], row['id']))
-csvfile.close()
-'''
-db.commit()
 #printTable= str(c.fetchall()).replace("),", "),\n")
 #Makes data more legible
 
@@ -55,3 +48,6 @@ print(str(c.fetchall()).replace("),", "),\n"), "\n\n\n")
 c.execute("SELECT * FROM sel_Courses;")
 print(str(c.fetchall()).replace("),", "),\n"), '\n')
 db.close()  #close database
+
+#remove_data("app.db")
+#Uncomment this to remove app.db file for easier testing
