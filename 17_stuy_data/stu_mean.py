@@ -1,9 +1,11 @@
-# Team Dem Boys -- Jared Asch, Ryan Aday
+# Light Nates -- Theodore Peters, Ryan Aday
 # SoftDev1 pd7
-# K16 -- No Trouble
-# 2018-10-04
+# k17 -- Average (If you know what I mean...)
+# 2018-10-09
 
 import csv, sqlite3    
+from random import choice, randint  #Needed for print statement
+
 
 #filename="peeps.csv"  #Can be changed for any file to be read
 DB_FILE="app.db"  #Creates .db file
@@ -11,31 +13,43 @@ DB_FILE="app.db"  #Creates .db file
 db=sqlite3.connect(DB_FILE) #Open file if exists, otherwise make db file
 c= db.cursor()  #Manipulates rows in a query
 
-def csv_to_db(filename):
-    with open(filename) as csvfile:
-        reader = csv.DictReader(csvfile, delimiter=",")  #Reads the csv file
-        header = reader.fieldnames  #Returns list of headers
-        table_name = filename.split(".")[0].split("/")[-1]
+c.execute("CREATE TABLE peeps_avg(id INTEGER PRIMARY KEY, average REAL);")
 
-        query = "CREATE TABLE " + table_name + "(" + ",".join([col + " TEXT" for col in header]) + ")"
-        c.execute(query)
-        #Creates table via the sqlite command, join fxn joins all of the file names with type for roster
+def get_avgs():
+    c.execute("DELETE FROM peeps_avg") #Clears peeps_avg table
+    c.execute("SELECT id FROM sel_Peeps")  #Takes all data from sel_Peeps table
+    stu_dat=c.fetchall()[:] #Grabs all student data from sel_Peeps
+    for student in stu_dat:
+        c.execute("SELECT mark FROM sel_Courses WHERE sel_Courses.id={};".format(student[0]))
+        #Selects marks with id = student's
+        grades = c.fetchall()
+        avg = 0.0
+        for marks in grades:
+            avg += marks[0]  #Adds avg to the marks list
+        avg /= len(grades)
+        c.execute("INSERT INTO peeps_avg VALUES({}, {});".format(student[0], avg))
 
-        for row in reader:
-            query = "INSERT INTO " + table_name + " VALUES ("  + ",".join(["\"" + val + "\"" for val in row.values()]) + ")"
-            c.execute(query)
-            #Creates each entry into table, join fxn joins all of the key data with type for roster
-
-csv_to_db("data/courses.csv")
-csv_to_db("data/peeps.csv")
-#Runs fnx for data files already in folder            
+def add_course(code, mark, stu_id):
+    c.execute('INSERT INTO sel_Courses VALUES("{}", {}, {});'.format(code, mark, stu_id))
+    
+get_avgs()   #Adds avgs to peeps_avg
+c.execute("SELECT * FROM peeps_avg;")
+print('averages of starting courses: \n\n', c.fetchall(), '\n\n\n')  #Prints everything from peeps_avg
+new_classes = ('A', 'B', 'C', 'D', 'D', 'E', 'F', 'G', 'H', 'I')
+for i in range(40):
+    add_course(choice(new_classes), randint(25, 99), randint(1, 10))  #Makes random marks for each new class
+c.execute("SELECT * FROM sel_Courses;")
+print('new courses:\n\n', c.fetchall(),'\n\n\n')  #Prints all data from new sel_Courses
+get_avgs()  #Updates averages
+c.execute("SELECT * FROM peeps_avg;")  
+print('new avgs: \n\n', c.fetchall(), '\n\n\n') #Prints everything from new peeps_avg
 
 db.commit()
 db.close()
 
 
 #IMPORTANT!  Windows users can only open up SQLite with winpty sqlite3 on their terminal.
-#To access data, run winpty sqlite3 app.py
+#To access data, run winpty sqlite3 app.db
 #Tables to see can be found with .tables
 #Commands to run are SELECT * from <table>;
 #If you want to be fancy, use command .mode columns

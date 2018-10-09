@@ -1,46 +1,54 @@
-# Team Dem Boys -- Jared Asch, Ryan Aday
+# Tarkus -- Theodore Peters, Mai Rachlevsky
 # SoftDev1 pd7
-# K16 -- No Trouble
-# 2018-10-04
+# k17 -- No Trouble
+# 2018-10-05
 
 import csv, sqlite3    
 
-#filename="peeps.csv"  #Can be changed for any file to be read
 DB_FILE="app.db"  #Creates .db file
 
 db=sqlite3.connect(DB_FILE) #Open file if exists, otherwise make db file
 c= db.cursor()  #Manipulates rows in a query
 
-def csv_to_db(filename):
-    with open(filename) as csvfile:
-        reader = csv.DictReader(csvfile, delimiter=",")  #Reads the csv file
-        header = reader.fieldnames  #Returns list of headers
-        print(header)
-        table_name = filename.split(".")[0].split("/")[-1]
+with open("data/peeps.csv") as csvfile:
+	c.execute("CREATE TABLE sel_Peeps(name TEXT, age INTEGER, id INTEGER PRIMARY KEY);")
+	reader = csv.DictReader(csvfile)  #Reads the csv file, no delimiter needed
+	for row in reader:
+		c.execute("INSERT INTO sel_Peeps VALUES('{}', {}, {});".format(row['name'], row['age'], row['id']))
+		#adds data for each row
+csvfile.close() #Ends executable
 
-        #query = "CREATE TABLE " + table_name + "(" + ",".join([col + " TEXT" for col in header]) + ")"
-        query = "CREATE TABLE {0} ({1}, {2}, {3})".format(""+row[key]+"," for key in header)
-        c.execute(query)
-        #Creates table via the sqlite command, join fxn joins all of the file names with type for roster
+with open("data/courses.csv") as csvfile:
+	c.execute("CREATE TABLE sel_Courses(code TEXT, mark INTEGER, id INTEGER);")
+	reader = csv.DictReader(csvfile)  #Reads the csv file, no delimiter needed
+	for row in reader:
+		c.execute("INSERT INTO sel_Courses VALUES('{}', {}, {});".format(row['code'], row['mark'], row['id']))
+		#adds row headers
+csvfile.close() #Ends executable
 
-        for row in reader:
-            query = "INSERT INTO " + table_name + " VALUES ("  + ",".join(["\"" + row[key] + "\"" for key in header]) + ")"
-            #query = "INSERT INTO " +table_name + " VALUES (" + 
-            c.execute(query)
-            #Creates each entry into table, join fxn joins all of the key data with type for roster
-        #command="CREATE TABLE {0} ({1}, {2}, {3})".format("peeps", "name", "age", "id")
-        #execute(command)
-        
-csv_to_db("data/courses.csv")
-csv_to_db("data/peeps.csv")
-#Runs fnx for data files already in folder            
+db.commit() #Needed to actually confirm tables being made
+'''
+db = sqlite3.connect('datta.db') #open if file exists, otherwise create
+c = db.cursor()               #facilitate db ops
+c.execute("CREATE TABLE nerds(name TEXT, age INTEGER, id INTEGER PRIMARY KEY);")
 
+csvfile = open('data/peeps.csv')
+reader = csv.DictReader(csvfile)
+for row in reader:
+    c.execute("INSERT INTO nerds VALUES('{}', {}, {});".format(row['name'], row['age'], row['id']))
+csvfile.close()
+
+csvfile = open('data/courses.csv')
+c.execute ("CREATE TABLE teacher_reviews(code TEXT, mark INTEGER, id INTEGER);")
+reader = csv.DictReader(csvfile)
+for row in reader:
+    c.execute("INSERT INTO teacher_reviews VALUES('{}', {}, {});".format(row['code'], row['mark'], row['id']))
+csvfile.close()
+'''
 db.commit()
-db.close()
-
-
-#IMPORTANT!  Windows users can only open up SQLite with winpty sqlite3 on their terminal.
-#To access data, run winpty sqlite3 app.py
-#Tables to see can be found with .tables
-#Commands to run are SELECT * from <table>;
-#If you want to be fancy, use command .mode columns
+#Prints data from both tables
+c.execute("SELECT * FROM sel_Peeps;")
+print(c.fetchall(), '\n')
+c.execute("SELECT * FROM sel_Courses;")
+print(c.fetchall(), '\n')
+db.close()  #close database
