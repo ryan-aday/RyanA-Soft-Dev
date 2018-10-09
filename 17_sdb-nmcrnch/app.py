@@ -10,7 +10,7 @@ def remove_data(data):
     os.remove(data)
     print(data+" removed.")
 
-if path.exists("app.db"==True):	
+if path.exists("app.db")==True:	
 	remove_data("app.db")
 else:
 	print("app.db not in use")
