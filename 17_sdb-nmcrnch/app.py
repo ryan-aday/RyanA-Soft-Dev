@@ -25,7 +25,8 @@ with open("data/peeps.csv") as csvfile:
 	c.execute("CREATE TABLE sel_Peeps(name TEXT, age INTEGER, id INTEGER PRIMARY KEY);")
 	reader = csv.DictReader(csvfile)  #Reads the csv file, no delimiter needed
 	for row in reader:
-		c.execute("INSERT INTO sel_Peeps VALUES('{}', {}, {});".format(row['name'], row['age'], row['id']))
+		#c.execute("INSERT INTO sel_Peeps VALUES('{}', {}, {});".format(row['name'], row['age'], row['id']))
+                c.execute("INSERT INTO sel_Peeps VALUES(?, ?, ?);", (row['name'], row['age'], row['id']))
 		#adds data for each row
 csvfile.close() #Ends executable
 
@@ -33,7 +34,9 @@ with open("data/courses.csv") as csvfile:
 	c.execute("CREATE TABLE sel_Courses(code TEXT, mark INTEGER, id INTEGER);")
 	reader = csv.DictReader(csvfile)  #Reads the csv file, no delimiter needed
 	for row in reader:
-		c.execute("INSERT INTO sel_Courses VALUES('{}', {}, {});".format(row['code'], row['mark'], row['id']))
+                #VALUES(?, ?, ?);', (code, mark, sid)
+		#c.execute("INSERT INTO sel_Courses VALUES('{}', {}, {});".format(row['code'], row['mark'], row['id']))
+                c.execute("INSERT INTO sel_Courses VALUES(?, ?, ?);", (row['code'], row['mark'], row['id']))
 		#adds row headers
 csvfile.close() #Ends executable
 db.commit() #Needed to actually confirm tables being made

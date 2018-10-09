@@ -27,11 +27,12 @@ def get_avgs():
         for marks in grades:
             avg += marks[0]  #Adds avg to the marks list
         avg /= len(grades)
-        c.execute("INSERT INTO peeps_avg VALUES({}, {});".format(student[0], avg))
-
+        #c.execute("INSERT INTO peeps_avg VALUES({}, {});".format(student[0], avg))
+        c.execute("INSERT INTO peeps_avg VALUES(?, ?);", (student[0], avg))
+    
 def add_course(code, mark, stu_id):
-    c.execute('INSERT INTO sel_Courses VALUES("{}", {}, {});'.format(code, mark, stu_id))
-
+    #c.execute('INSERT INTO sel_Courses VALUES("{}", {}, {});'.format(code, mark, stu_id))
+    c.execute("INSERT INTO sel_Courses VALUES(?, ?, ?);", (code, mark, stu_id))
 def remove_data(data):
     os.remove(data)
     print(data+" removed.")
