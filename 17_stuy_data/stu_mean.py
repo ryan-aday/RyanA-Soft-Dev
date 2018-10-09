@@ -3,7 +3,7 @@
 # k17 -- Average (If you know what I mean...)
 # 2018-10-09
 
-import csv, sqlite3    
+import csv, sqlite3, os    
 from random import choice, randint  #Needed for print statement
 
 
@@ -32,6 +32,10 @@ def get_avgs():
 def add_course(code, mark, stu_id):
     c.execute('INSERT INTO sel_Courses VALUES("{}", {}, {});'.format(code, mark, stu_id))
 
+def remove_data(data):
+    os.remove(data)
+    print(data+" removed.")
+
 #printTable=str(c.fetchall()).replace("),", "),\n")
 #Makes data more legible
 
@@ -51,6 +55,8 @@ print('new avgs: \n\n', str(c.fetchall()).replace("),", "),\n"), '\n\n\n') #Prin
 db.commit()
 db.close()
 
+#remove_data("app.db")
+#Uncomment this to remove app.db file for easier testing
 
 #IMPORTANT!  Windows users can only open up SQLite with winpty sqlite3 on their terminal.
 #To access data, run winpty sqlite3 app.db
