@@ -1,0 +1,33 @@
+	/* edits.css */
+	h1{
+		color:#FFFFFF;
+		text-align:center;
+		background-color: lightgray;
+	}
+	body{	
+		font-family:"Verdana", sans-serif;
+		background-color: gray;
+	}
+	ul{
+		list-style-type:none;
+		margin: 0;
+		padding: 0;
+	}	
+	a{
+		color:#FFFFFF;
+		text-decoration: none;
+	}	
+	
+	#cr{
+		background-color:#36454f;
+		color: gray;
+		text-align:right;
+	}
+	#block{
+		display: inline-block;
+	  	width: 50%;
+		margin: 0 10%;	
+	}
+	#list{
+		float:left;
+	}		
