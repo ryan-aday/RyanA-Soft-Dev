@@ -1,48 +1,221 @@
 <!--
-Team yeet
-Ryan Aday
-HW#23-- Foundation Education
-2018-11-09
--->
+Team Yeet
+Clara Mohri, Ryan Aday
+SoftDev1 Pd07
+K23 -- How the Other Half Lives
+2018-11-13
+  -->
 
-<!-- Using example code from sephora -->
-<!doctype html>
+<!DOCTYPE html>
 <html>
-	<head>
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.5.0/dist/css/foundation.min.css"> 
-		<style>
-			ul.nested{
-				list-style-type: circle;
-			}
-		</style>	
-	</head>
+  <title>Foundation Features</title>
+  <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.5.0/dist/css/foundation.min.css">
+  </head>
+  <body>
+    <div class="grid-container">
+        <div class="grid-x grid-padding-x">
+           <div class="large-12 cell">
+             <h1>Foundation Features</h1>
+           </div>
+        </div>
+        <div class="top-bar">
+           <div class="top-bar-left">
+              <ul class="dropdown menu" data-dropdown-menu>
+                 <li class="menu-text">Nav bar</li>
+                 <li><a href="#">One</a></li>
+                 <li><a href="#">Two</a></li>
+                 <li><a href="#">Three</a></li>
+              </ul>
+           </div>
+           <div class="top-bar-right">
+              <ul class="menu">
+                 <li><input type="search" placeholder="Search"></li>
+                  <li><button type="button" class="button">Search</button></li>
+              </ul>
+          </div>
+        </div>
+        <br>
+        <h1> Grid System</h1>
 
-	<body>
-		<div class="grid-container">
-			<div class="grid-x grid-padding-x">
-				<h1 style="test-align: center">Testing Foundation <small> with yeet </small></h1> 
-			</div>		
-		</div>
-		<br/>
-		
-		 
-      		<div class="grid-x grid-padding-x">
-			<div class = "cell medium-2  medium-cell-block-y">
-				<div class="vertical menu">
-	    				<li><a href="#">Home</a></li>
-	    				<li><a href="#">About</a></li>
-	    				<li><a href="#">Things Tested in Foundation</a>
-	      					<ul class="nested vertical menu">
-							<li><a class="nested" href="#">XY Grid</a></li>
-							<li><a class="nested" href="#">Typography</a></li>
-							<li><a class="nested" href="#">Navigation</a></li>
-							<li><a class="nested" href="#">Control</a></li>
-							<li><a class="nested" href="#">Containers</a></li>
-							<li><a class="nested" href="#">Media</a></li>
-	      					</ul>
-					</li>
-				</div>
-			</div>
-		</div>
-	</body>
+        <div class="grid-x grid-padding-x">
+          <div class="cell large-6 medium-9 small-3">
+            <p>Cow paneer gouda. Squirty cheese cheese triangles fromage frais cheesy feet mozzarella airedale swiss cheesy grin.
+              Cheesy grin caerphilly paneer edam squirty cheese manchego fromage frais roquefort. Swiss paneer blue castello say
+              cheese camembert de normandie brie brie cheese on toast. Mozzarella.</p>
+          </div>
+          <div class="cell large-6 medium-3 small-9">
+            <p>Bavarian bergkase cheese triangles danish fontina. Ricotta cauliflower cheese squirty cheese cheesy feet parmesan
+              halloumi jarlsberg paneer. Paneer goat cheeseburger squirty cheese feta cheese slices mascarpone cheese triangles.
+              Everyone loves camembert de normandie cheese and wine pepper jack boursin cheesecake cheese slices manchego. Fromage
+              chalk and cheese.</p>
+          </div>
+        </div>
+
+        <h1> Buttons </h1>
+        <h3> Coloring </h3>
+        <h4>Options: primary, secondary, success, alert, warning</h4>
+        Changes the button's color based on the class of button that is specified.See line 68-72
+        <br>
+        <a class="button primary" href="#">Primary</a>
+        <a class="button secondary" href="#">Secondary</a>
+        <a class="button success" href="#">Success</a>
+        <a class="button alert" href="#">Alert</a>
+        <a class="button warning" href="#">Warning</a>
+
+        <h3>Sizing</h3>
+        <h4>Options: tiny, small, large, expanded</h4>
+        Changes the button's size based on the class of button that is specified. Expanded will change the width of the button to fill the entire container. See line 80-84
+        <br>
+        <a class="button tiny" href="#">Tiny</a>
+        <a class="button small" href="#">Small</a>
+        <a class="button" href="#">Original</a>
+        <a class="button large" href="#">Large</a>
+        <a class="button expanded" href="#">Expanded</a>
+
+        <h3>Others</h3>
+        <h4>Options: hollow, clear</h4>
+        Hollow creates a button without a background but with a border.
+    Clear creates a button without a background nor a border.
+    Disabled creates a button that looks like it is disabled; the disabled class must be added to actually disable it. See line 92-94
+        <br>
+        <button class="hollow button" href="#">Hollow</button>
+        <button class="clear button" href="#">Clear</button>
+        <button type="button" class="button primary" disabled>Disabled</button>
+        <br>Any combination of these classes can also be created:
+        <a class = "button large expanded alert disabled hollow" href = "#">Large Expanded Alert Hollow Disabled Button</a>
+
+
+        <h1>Callouts</h1>
+        Callouts are a type of container that creates a box and has styling features. They also have the color and sizing options that can be found with buttons except tiny, expanded, hollow and clear. See line 110-130
+
+        <div class="callout">
+          <h1>Heading</h1>
+          <p>hello world</p>
+          <a href="#">Link</a>
+        </div>
+
+        <div class = "callout primary">
+          Primary callout
+        </div>
+        <div class = "callout secondary">
+          Secondary callout
+        </div>
+        <div class = "callout success">
+          Success callout
+        </div>
+        <div class = "callout alert">
+          Alert callout
+        </div>
+        <div class = "callout warning">
+          Warning callout
+        </div>
+        <div class = "callout small">
+          Small callout
+        </div>
+        <div class = "callout large">
+          Large callout
+        </div>
+
+        <h1>Tables</h1>
+        This is how the default table looks like.
+        <table>
+          <thead>
+    	<tr>
+    	  <th>Name</th>
+    	  <th>Birthday</th>
+    	  <th>Height</th>
+    	  <th>Favorite Color</th>
+    	</tr>
+          </thead>
+          <tbody>
+    	<tr>
+    	  <td>Alpha</td>
+    	  <td>March 21, 2001</td>
+    	  <td>5'4"</td>
+    	  <td>Red</td>
+    	</tr>
+    	<tr>
+          <td>Beta</td>
+          <td>October 9, 2000</td>
+          <td>5'7"</td>
+          <td>Blue</td>
+    	</tr>
+    	<tr>
+    	  <td>Gamma</td>
+    	  <td>June 12, 2001</td>
+    	  <td>5'4"</td>
+    	  <td>Blue</td>
+    	</tr>
+          </tbody>
+        </table>
+
+        <br>
+        This is a table with the class unstriped. The stripe pattern is removed from the table. See line 167
+        <table class = "unstriped">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Birthday</th>
+              <th>Height</th>
+              <th>Favorite Color</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Alpha</td>
+              <td>March 21,	2001</td>
+              <td>5'4"</td>
+              <td>Red</td>
+            </tr>
+            <tr>
+          <td>Beta</td>
+          <td>October 9, 2000</td>
+          <td>5'7"</td>
+          <td>Blue</td>
+            </tr>
+            <tr>
+              <td>Gamma</td>
+              <td>June 12, 2001</td>
+              <td>5'4"</td>
+              <td>Blue</td>
+            </tr>
+          </tbody>
+        </table>
+
+
+        This is a table with the class hover. When the cursor hovers over a row, it is lightly darkened. See line 199
+        <table class = "hover">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Birthday</th>
+              <th>Height</th>
+              <th>Favorite Color</th>
+            </tr>
+          </thead>
+        </table>
+
+        You can have embed contents in your website by wrapping your element with class "responsive-embed". See line 212
+        <div class="responsive-embed">
+          <iframe width="420" height="315" src="https://www.youtube.com/embed/mM5_T-F1Yn4" frameborder="0" allowfullscreen></iframe>
+        </div>
+
+        <br>
+        Pagination is a way for users to click through page of search results. This function can be seen on Google or any search engine. See line 218
+        <nav aria-label="Pagination">
+          <ul class="pagination">
+    	<li class="pagination-previous">Previous <span class="show-for-sr">page</span></li>
+    	<li class="current"><span class="show-for-sr">You're on page</span> 1</li>
+    	<li><a href="#" aria-label="Page 2">2</a></li>
+    	<li><a href="#" aria-label="Page 3">3</a></li>
+    	<li><a href="#" aria-label="Page 4">4</a></li>
+    	<li class="ellipsis" aria-hidden="true"></li>
+    	<li><a href="#" aria-label="Page 12">12</a></li>
+    	<li><a href="#" aria-label="Page 13">13</a></li>
+    	<li class="pagination-next"><a href="#" aria-label="Next page">Next <span class="show-for-sr">page</span></a></li>
+          </ul>
+        </nav>
+    </div>
+  </body>
 </html>
