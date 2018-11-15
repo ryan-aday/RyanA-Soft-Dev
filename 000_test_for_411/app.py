@@ -12,7 +12,8 @@ def reroute():
         with urllib.request.urlopen(url) as testfile, open('dataset.json', 'w') as f:
             f.write(testfile.read().decode())
         kind=parse_API.kind()
-        return render_template("index.html", kind=kind)
+        items=parse_API.items()
+        return render_template("index.html", kind=kind, items=items)
 if (__name__) == "__main__":#if this file is run directly then the Flask app will run
     app.debug = True#allows changes to directly affect local host without rerunning app
     app.run()

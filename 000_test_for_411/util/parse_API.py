@@ -7,32 +7,10 @@ def kind():
         data = json.load(read_file)
     return data["kind"]
 
-def video():
+def items():
     data={}
     with open("dataset.json", "r") as read_file:
         data = json.load(read_file)
-    return data["url"]
+    return data["items"]
 
-def title():
-    data={}
-    with open("dataset.json", "r") as read_file:
-        data = json.load(read_file)
-    return data.get("title", "None")
-
-def version():
-    data={}
-    with open("dataset.json", "r") as read_file:
-        data = json.load(read_file)
-    return data.get("version", "None")
-
-def media_type():
-    data={}
-    with open("dataset.json", "r") as read_file:
-        data = json.load(read_file)
-    return data.get("media_type", "None")
-
-def imagesun():
-    data={}
-    with open("sundataset.json", "r") as read_file:
-        data = json.load(read_file)
-    return data.get("image", "None")
+#Can add a bunch of other things after refering to data
