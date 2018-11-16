@@ -1,3 +1,8 @@
+#Ryan Aday
+#K26 - APIs
+#Period 7
+#2018-11-14
+
 import urllib.request
 import json
 from flask import Flask, render_template
