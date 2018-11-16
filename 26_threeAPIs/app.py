@@ -17,13 +17,14 @@ def reroute():
             f.write(testfile.read().decode())
         img_dog=parse_API.imageDog()
 
-        baseurl = "https://query.yahooapis.com/v1/public/yql?"
-        yql_query = "select wind from weather.forecast where woeid=2460286"
-        yql_url = baseurl + urllib.urlencode({'q':yql_query}) + "&format=json"
-        result = urllib2.urlopen(yql_url).read()
-        data = json.loads(result)
-        weather= data['query']['results']['image']['url']
-        return render_template("index.html", comic_image=img_XKCD, dog_image=img_dog, weather=weather)
+        weather='https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22nome%2C%20ak%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys'
+        with urllib.request.urlopen(weather) as testfile, open('data_weather.json', 'w') as f:
+            f.write(testfile.read().decode())
+        imageWeather=parse_API.imageWeather()
+
+        #img_dog=parse_API.imageDog()
+
+        return render_template("index.html", comic_image=img_XKCD, dog_image=img_dog, weather=imageWeather)
 if (__name__) == "__main__":#if this file is run directly then the Flask app will run
     app.debug = True#allows changes to directly affect local host without rerunning app
     app.run()
