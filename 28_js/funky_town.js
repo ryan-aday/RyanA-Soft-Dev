@@ -19,4 +19,8 @@ function gcd(a, b){
     return gcd(b, a % b);
 }
 
+var students=["James", "Audrey", "TD", "DANK MEMER"]
 
+function randomStudent(){
+    return students[Math.floor(Math.random()*students.length)]; 
+}
