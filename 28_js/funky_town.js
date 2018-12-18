@@ -13,10 +13,10 @@ function fibonacci(n) {
 }
 
 function gcd(a, b){
-    var t = b;
-    b = a % b;
-    a = t;
-    return a;
+    if ( ! b) {
+        return a;
+    }
+    return gcd(b, a % b);
 }
 
 
