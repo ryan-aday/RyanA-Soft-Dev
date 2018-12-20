@@ -1,5 +1,8 @@
 /* Team AK47 
-
+Ryan Aday
+SoftDev1 pd<p>
+K29 -- Testing JS
+2018-12-20 
 */
 
 var fact = (n) => {
@@ -29,6 +32,14 @@ var randomStudent = () =>{
     return students[Math.floor(Math.random()*students.length)]; 
 }
 
+
+/*Adding EventListeners
+You need to create a var that looks for a specific object in the html file
+that carries a specific id.  You can then add a listener to the variable to
+check for a type of input done to that object.  WARNING-- the second constraint
+in the parens must be a function; hence, the code below.
+*/
+
 var factButt=document.getElementById("fact")
 factButt.addEventListener("click", fa);
 
@@ -42,6 +53,11 @@ gButt.addEventListener("click", gc);
 
 var randButt=document.getElementById("rand")
 randButt.addEventListener("click", ra);
+
+/*Functions
+Can call upon vars.  alert() shoots a textbox telling you the 
+return of a function/string you place in the parens
+*/
 
 function fa(){
 	console.log(fact(20));
@@ -62,14 +78,3 @@ function ra(){
 	console.log(randomStudent());
 	alert(randomStudent());
 }
-
-    /* console.log() */
-/* document.getElementById(<ID>) 
-	document.getElementsByTagName
-
-	.addEventListener(<EVENT>, <FUNCTION>)
-
-
-var hh = document.getElementById("b");
-hh.addEventListener('click', fxnName)
-*/

@@ -1,5 +1,8 @@
 /* Team AK47 
-
+Ryan Aday
+SoftDev1 pd<p>
+K28 -- Testing JS
+2018-12-19 
 */
 
 var fact = (n) => {
