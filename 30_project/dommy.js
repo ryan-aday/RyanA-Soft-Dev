@@ -15,12 +15,15 @@ for (i=0; i<y.length; i++){
 	replacement.addEventListener('mouseover', function(e){
 		header.innerHTML=replacement.innerHTML;
 	});
-}	
+	replacement.addEventListener('mouseout', function(e){
+		header.innerHTML="Hello World!";
+	});
+}
+	
 
 /*Remove Main List Fxns */
 for (i=0; i<y.length; i++){
 	let replacement=y[i];
-	console.log(y[i]);
 	replacement.addEventListener('click', function(e){
 		replacement.remove();
 	});
@@ -37,7 +40,17 @@ b.addEventListener('click', function(e){
 	li.appendChild(document.createTextNode("item " + counter));
 	counter++;
 	list.appendChild(li);
-
+	
+	let replacement=li;
+	replacement.addEventListener('click', function(e){
+		replacement.remove();
+	});
+	replacement.addEventListener('mouseover', function(e){
+		header.innerHTML=replacement.innerHTML;
+	});	
+	replacement.addEventListener('mouseout', function(e){
+		header.innerHTML="Hello World!";
+	});
 });
 
 
@@ -66,5 +79,64 @@ var li= document.createElement("li");
 	replacement.addEventListener('mouseover', function(e){
 		header.innerHTML=replacement.innerHTML;
 	});
+	replacement.addEventListener('mouseout', function(e){
+		header.innerHTML="Hello World!";
+	});
 });
 
+
+/* Making Factorial */
+var fact = (n) => {
+    if(n == 0) {
+        return 1
+    }
+    return n * fact(n - 1);
+}
+
+var facounter=0;
+
+var fac=document.getElementById("fac");
+var factlist=document.getElementById("factlist");
+
+fac.addEventListener('click', function(e){
+var li= document.createElement("li");
+	li.appendChild(document.createTextNode(fact(facounter)));
+	facounter++;
+	factlist.appendChild(li);	
+	let replacement=li;
+	replacement.addEventListener('click', function(e){
+		replacement.remove();
+	});
+	replacement.addEventListener('mouseover', function(e){
+		header.innerHTML=replacement.innerHTML;
+	});
+	replacement.addEventListener('mouseout', function(e){
+		header.innerHTML="Hello World!";
+	});
+});
+
+/*Making Random Student List*/
+var students=["James", "Audrey", "TD", "DANK MEMER"]
+
+var randomStudent = () =>{
+    return students[Math.floor(Math.random()*students.length)]; 
+}
+
+var rand=document.getElementById("rand");
+var randlist=document.getElementById("randlist");
+
+rand.addEventListener('click', function(e){
+var li= document.createElement("li");
+	li.appendChild(document.createTextNode(randomStudent()));
+	randlist.appendChild(li);	
+	let replacement=li;
+	replacement.addEventListener('click', function(e){
+		replacement.remove();
+	});
+	replacement.addEventListener('mouseover', function(e){
+		header.innerHTML=replacement.innerHTML;
+	});
+	replacement.addEventListener('mouseout', function(e){
+		header.innerHTML="Hello World!";
+	});
+});
