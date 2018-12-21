@@ -5,6 +5,19 @@ K30 -- Testing JS
 2018-12-21 
 */
 
+
+/*Changing Divs*/
+var toi=document.getElementsByClassName("blue");
+var toid=toi[0];
+
+toid.addEventListener("mouseover", function(e){
+	toid.className = "red";
+});
+toid.addEventListener("mouseout", function(e){
+	toid.className = "blue";
+});
+
+
 /* Header Change */
 var x = document.getElementById("thelist");
 var y = x.getElementsByTagName("li");
